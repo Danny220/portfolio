@@ -175,75 +175,12 @@
             box-shadow: 0 10px 30px -15px rgba(10, 25, 47, 0.7);
         }
         
-        /* Gemini Modal */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(10, 25, 47, 0.8);
-            backdrop-filter: blur(5px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-        .modal-overlay.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-        .modal-content {
-            background-color: var(--light-navy);
-            padding: 2rem;
-            border-radius: 0.5rem;
-            width: 90%;
-            max-width: 600px;
-            transform: scale(0.95);
-            transition: transform 0.3s ease;
-        }
-        .modal-overlay.visible .modal-content {
-            transform: scale(1);
-        }
-        
         #mobile-menu {
             background-color: var(--light-navy);
         }
         
         #mobile-menu.open {
             transform: translateX(0);
-        }
-
-        /* Gemini Button */
-        .gemini-btn {
-            background-color: var(--cyan);
-            color: var(--dark-navy);
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-        .gemini-btn:hover {
-            background-color: #52e0c4;
-            transform: translateY(-2px);
-        }
-        .gemini-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        /* Loading Spinner */
-        .loader {
-            border: 4px solid var(--lightest-navy);
-            border-top: 4px solid var(--cyan);
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
         }
 
     </style>
@@ -258,7 +195,6 @@
                 <a href="#education" data-section="education" class="nav-link"><span class="text-cyan-400" style="color: var(--cyan);">03.</span> Education</a>
                 <a href="#languages" data-section="languages" class="nav-link"><span class="text-cyan-400" style="color: var(--cyan);">04.</span> Languages</a>
                 <a href="#projects" data-section="projects" class="nav-link"><span class="text-cyan-400" style="color: var(--cyan);">05.</span> Projects</a>
-                <a href="#career-goals" data-section="career-goals" class="nav-link"><span class="text-cyan-400" style="color: var(--cyan);">06.</span> Career</a>
             </div>
             <button id="menu-btn" class="md:hidden z-50 text-cyan-400">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -275,7 +211,6 @@
         <a href="#education" class="mobile-nav-link text-lg"><span class="text-cyan-400 mr-2">03.</span>Education</a>
         <a href="#languages" class="mobile-nav-link text-lg"><span class="text-cyan-400 mr-2">04.</span>Languages</a>
         <a href="#projects" class="mobile-nav-link text-lg"><span class="text-cyan-400 mr-2">05.</span>Projects</a>
-        <a href="#career-goals" class="mobile-nav-link text-lg"><span class="text-cyan-400 mr-2">06.</span>Career</a>
     </div>
 
     <canvas id="particle-canvas"></canvas>
@@ -349,9 +284,8 @@
 
         <!-- Personal Projects Section -->
         <section id="projects" class="py-24 fade-in-section">
-             <div class="flex items-center justify-between mb-8">
+             <div class="flex items-center mb-8">
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-200" style="color: var(--lightest-slate);"><span class="text-cyan-400" style="color: var(--cyan);">05.</span> Personal Projects</h2>
-                <button id="open-gemini-modal-btn" class="gemini-btn font-mono text-sm font-bold py-2 px-4 rounded">✨ Suggest a Project Description</button>
             </div>
             <div class="project-card rounded-lg p-6 transition-all duration-300" style="background-color: var(--light-navy);">
                 <header class="flex justify-between items-start mb-4">
@@ -391,18 +325,6 @@
             </div>
         </section>
         
-        <!-- Career Goals Section -->
-        <section id="career-goals" class="py-24 fade-in-section">
-            <div class="text-center">
-                <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-200" style="color: var(--lightest-slate);"><span class="text-cyan-400" style="color: var(--cyan);">06.</span> Career Goals</h2>
-                <p class="max-w-2xl mx-auto mb-8">Curious about the next step? Let AI analyze my profile and suggest potential career paths based on my experience and skills.</p>
-                <button id="suggest-career-btn" class="gemini-btn font-mono text-sm font-bold py-3 px-6 rounded">✨ Suggest My Next Career Move</button>
-                <div id="career-suggestions-container" class="mt-12 text-left">
-                    <!-- AI suggestions will be injected here -->
-                </div>
-            </div>
-        </section>
-
         <!-- Footer -->
         <footer class="text-center py-12 text-gray-500 text-sm" style="color: var(--slate);">
             <p>Designed & Built by Daniele Manna</p>
@@ -410,29 +332,6 @@
         </footer>
 
     </div>
-    
-    <!-- Gemini Project Description Modal -->
-    <div id="gemini-modal" class="modal-overlay">
-        <div class="modal-content">
-            <h3 class="text-2xl font-bold mb-4" style="color: var(--lightest-slate);">✨ AI Project Description Generator</h3>
-            <p class="mb-4">Enter a few keywords about your project, and let Gemini craft a professional description for you.</p>
-            <textarea id="project-keywords" class="w-full bg-gray-900 rounded p-2 text-gray-300 border border-gray-700 focus:border-cyan-400 focus:outline-none" style="background-color: var(--dark-navy); border-color: var(--lightest-navy);" rows="3" placeholder="e.g., Social media app for pet owners, React, Firebase, real-time chat"></textarea>
-            <div class="flex items-center justify-between mt-4">
-                 <button id="generate-desc-btn" class="gemini-btn font-mono text-sm font-bold py-2 px-4 rounded flex items-center">
-                    <span id="generate-btn-text">Generate</span>
-                    <div id="generate-loader" class="loader ml-2 hidden"></div>
-                </button>
-                <button id="close-gemini-modal-btn" class="bg-transparent text-sm text-gray-400 hover:text-cyan-400">Close</button>
-            </div>
-            <div id="gemini-response-container" class="mt-6">
-                <h4 class="font-bold mb-2" style="color: var(--light-slate);">Suggested Description:</h4>
-                <div id="gemini-response" class="bg-gray-900 rounded p-4 text-gray-300 text-sm" style="background-color: var(--dark-navy);">
-                    Your generated description will appear here...
-                </div>
-            </div>
-        </div>
-    </div>
-
 
     <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -738,117 +637,6 @@
         // Make the first section visible immediately
         if (fadeSections.length > 0) {
             fadeSections[0].classList.add('is-visible');
-        }
-        
-        
-        // --- GEMINI API INTEGRATION ---
-        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=AIzaSyCJCpMEhE3wMkCTMCDtkp2G_jT7uLoqZQg`;
-        
-        // Modal Handling
-        const modal = document.getElementById('gemini-modal');
-        const openModalBtn = document.getElementById('open-gemini-modal-btn');
-        const closeModalBtn = document.getElementById('close-gemini-modal-btn');
-        openModalBtn.addEventListener('click', () => modal.classList.add('visible'));
-        closeModalBtn.addEventListener('click', () => modal.classList.remove('visible'));
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.remove('visible');
-            }
-        });
-
-        // Feature 1: Project Description Generator
-        const generateDescBtn = document.getElementById('generate-desc-btn');
-        const projectKeywords = document.getElementById('project-keywords');
-        const geminiResponseEl = document.getElementById('gemini-response');
-        const genBtnText = document.getElementById('generate-btn-text');
-        const genLoader = document.getElementById('generate-loader');
-
-        generateDescBtn.addEventListener('click', async () => {
-            const keywords = projectKeywords.value;
-            if (!keywords) {
-                geminiResponseEl.textContent = "Please enter some keywords first.";
-                return;
-            }
-
-            genBtnText.textContent = 'Generating...';
-            genLoader.classList.remove('hidden');
-            generateDescBtn.disabled = true;
-
-            const systemPrompt = "You are a senior software engineer writing a project description for a portfolio. Make it professional, compelling, and concise (2-3 sentences). Highlight the key technologies and the problem it solves.";
-            const userQuery = `Write a project description based on these keywords: ${keywords}`;
-
-            try {
-                const response = await callGeminiApi(userQuery, systemPrompt);
-                geminiResponseEl.textContent = response;
-            } catch (error) {
-                console.error("Error generating description:", error);
-                geminiResponseEl.textContent = "Sorry, something went wrong. Please try again.";
-            } finally {
-                genBtnText.textContent = 'Generate';
-                genLoader.classList.add('hidden');
-                generateDescBtn.disabled = false;
-            }
-        });
-
-        // Feature 2: Career Path Suggester
-        const suggestCareerBtn = document.getElementById('suggest-career-btn');
-        const careerSuggestionsContainer = document.getElementById('career-suggestions-container');
-
-        suggestCareerBtn.addEventListener('click', async () => {
-            suggestCareerBtn.innerHTML = '<div class="loader mx-auto"></div>';
-            suggestCareerBtn.disabled = true;
-
-            // Gather profile data from the DOM
-            const skills = Array.from(skillsGrid.querySelectorAll('.skill-item')).map(el => el.textContent.trim()).join(', ');
-            const experience = experienceData.map(job => `${job.role} at ${job.company}`).join('; ');
-            
-            const profileSummary = `
-                - Location: Turin, Italy
-                - Experience: ${experience}
-                - Skills: ${skills}
-            `;
-            
-            const systemPrompt = "You are a senior tech recruiter and career coach. Based on the following profile of a Full Stack Engineer, suggest three potential next career steps. For each suggestion, provide a job title, explain why it's a good fit in a short paragraph, and list 3-4 key skills to focus on developing. Format the entire response in simple HTML using <div>s for each suggestion, <h4> for the title, <p> for the explanation, and an unordered list <ul> for skills.";
-            const userQuery = `Analyze this profile and suggest career steps:\n${profileSummary}`;
-
-            try {
-                const response = await callGeminiApi(userQuery, systemPrompt);
-                careerSuggestionsContainer.innerHTML = response;
-            } catch (error) {
-                console.error("Error suggesting career path:", error);
-                careerSuggestionsContainer.innerHTML = `<p class="text-center text-red-400">Sorry, could not fetch career suggestions. Please try again later.</p>`;
-            } finally {
-                 suggestCareerBtn.innerHTML = '✨ Suggest My Next Career Move';
-                 suggestCareerBtn.disabled = false;
-            }
-        });
-        
-        async function callGeminiApi(userQuery, systemInstructionText) {
-             const payload = {
-                contents: [{ parts: [{ text: userQuery }] }],
-                systemInstruction: {
-                    parts: [{ text: systemInstructionText }]
-                },
-             };
-
-             const response = await fetch(API_URL, {
-                 method: 'POST',
-                 headers: { 'Content-Type': 'application/json' },
-                 body: JSON.stringify(payload)
-             });
-             
-             if (!response.ok) {
-                throw new Error(`API call failed with status: ${response.status}`);
-             }
-
-             const result = await response.json();
-             const candidate = result.candidates?.[0];
-
-             if (candidate && candidate.content?.parts?.[0]?.text) {
-                 return candidate.content.parts[0].text;
-             } else {
-                 throw new Error("Invalid response structure from API.");
-             }
         }
 
     });
