@@ -96,7 +96,7 @@
             opacity: 1;
             padding: 1.5rem;
         }
-
+        
         .timeline-tab.active {
             color: var(--cyan);
             border-left-color: var(--cyan);
@@ -123,87 +123,137 @@
             color: var(--cyan);
         }
 
+        /* Project Card */
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -15px rgba(10, 25, 47, 0.7);
+        }
+
     </style>
 </head>
 <body class="antialiased">
-<canvas id="particle-canvas"></canvas>
+    <canvas id="particle-canvas"></canvas>
 
-<div class="container mx-auto max-w-4xl px-6 py-12 md:py-24">
-    <!-- Hero Section -->
-    <section id="hero" class="min-h-screen flex flex-col justify-center items-start fade-in-section">
-        <p class="text-cyan-400 text-lg mb-4" style="color: var(--cyan);">Hi, my name is</p>
-        <h1 class="text-4xl sm:text-6xl md:text-7xl font-bold text-gray-200" style="color: var(--lightest-slate);" id="hero-name"></h1>
-        <h2 class="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-400 mt-2" style="color: var(--slate);" id="hero-title"></h2>
+    <div class="container mx-auto max-w-4xl px-6 py-12 md:py-24">
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-screen flex flex-col justify-center items-start fade-in-section">
+            <p class="text-cyan-400 text-lg mb-4" style="color: var(--cyan);">Hi, my name is</p>
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-bold text-gray-200" style="color: var(--lightest-slate);" id="hero-name"></h1>
+            <h2 class="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-400 mt-2" style="color: var(--slate);" id="hero-title"></h2>
+            
+            <p class="mt-6 max-w-xl text-lg">
+                I'm a full stack engineer based in Turin, Italy, specializing in building (and occasionally designing) exceptional digital experiences.
+            </p>
 
-        <p class="mt-6 max-w-xl text-lg">
-            I'm a full stack engineer based in Turin, Italy, specializing in building (and occasionally designing) exceptional digital experiences.
-        </p>
-
-        <div class="flex items-center space-x-6 mt-12">
-            <a href="https://www.linkedin.com/in/daniele-manna" target="_blank" rel="noopener noreferrer" class="social-link text-gray-400 hover:text-cyan-400" style="color: var(--slate);">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-            </a>
-            <a href="https://github.com/Danny220" target="_blank" rel="noopener noreferrer" class="social-link text-gray-400 hover:text-cyan-400" style="color: var(--slate);">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.54 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-            </a>
-            <a href="mailto:danielemanna02@gmail.com" class="social-link text-gray-400 hover:text-cyan-400" style="color: var(--slate);">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-            </a>
-            <a href="tel:+393341609873" class="social-link text-gray-400 hover:text-cyan-400" style="color: var(--slate);">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-            </a>
-        </div>
-    </section>
-
-    <!-- Professional Experience Section -->
-    <section id="experience" class="py-24 fade-in-section">
-        <h2 class="text-2xl md:text-3xl font-bold mb-8 text-gray-200" style="color: var(--lightest-slate);"><span class="text-cyan-400" style="color: var(--cyan);">01.</span> Professional Experience</h2>
-        <div class="flex flex-col md:flex-row">
-            <div id="timeline-tabs" class="md:w-1/4 flex md:flex-col mb-8 md:mb-0">
-                <!-- Tabs will be dynamically generated here -->
+            <div class="flex items-center space-x-6 mt-12">
+                <a href="https://www.linkedin.com/in/daniele-manna" target="_blank" rel="noopener noreferrer" class="social-link text-gray-400 hover:text-cyan-400" style="color: var(--slate);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+                <a href="https://github.com/Danny220" target="_blank" rel="noopener noreferrer" class="social-link text-gray-400 hover:text-cyan-400" style="color: var(--slate);">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.54 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                </a>
+                <a href="mailto:danielemanna02@gmail.com" class="social-link text-gray-400 hover:text-cyan-400" style="color: var(--slate);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </a>
+                 <a href="tel:+393341609873" class="social-link text-gray-400 hover:text-cyan-400" style="color: var(--slate);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                </a>
             </div>
-            <div id="timeline-details" class="md:w-3/4">
-                <!-- Details will be dynamically generated here -->
+        </section>
+
+        <!-- Professional Experience Section -->
+        <section id="experience" class="py-24 fade-in-section">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8 text-gray-200" style="color: var(--lightest-slate);"><span class="text-cyan-400" style="color: var(--cyan);">01.</span> Professional Experience</h2>
+            <div class="flex flex-col md:flex-row">
+                <div id="timeline-tabs" class="md:w-1/4 flex md:flex-col mb-8 md:mb-0">
+                    <!-- Tabs will be dynamically generated here -->
+                </div>
+                <div id="timeline-details" class="md:w-3/4">
+                    <!-- Details will be dynamically generated here -->
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="py-24 fade-in-section">
-        <h2 class="text-2xl md:text-3xl font-bold mb-8 text-gray-200" style="color: var(--lightest-slate);"><span class="text-cyan-400" style="color: var(--cyan);">02.</span> Technical Skills</h2>
-        <div id="skills-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-            <!-- Skill items will be dynamically generated here -->
-        </div>
-    </section>
+        <!-- Skills Section -->
+        <section id="skills" class="py-24 fade-in-section">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8 text-gray-200" style="color: var(--lightest-slate);"><span class="text-cyan-400" style="color: var(--cyan);">02.</span> Technical Skills</h2>
+            <div id="skills-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                <!-- Skill items will be dynamically generated here -->
+            </div>
+        </section>
+        
+        <!-- Education Section -->
+        <section id="education" class="py-24 fade-in-section">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8 text-gray-200" style="color: var(--lightest-slate);"><span class="text-cyan-400" style="color: var(--cyan);">03.</span> Education</h2>
+            <div class="bg-gray-800 rounded-lg p-6 border-l-4 border-cyan-400" style="background-color: var(--light-navy); border-left-color: var(--cyan);">
+                <h3 class="font-bold text-lg text-gray-200" style="color: var(--lightest-slate);">Secondary School Diploma in IT</h3>
+                <p class="mt-1">ITIS Ettore Majorana</p>
+            </div>
+        </section>
 
-    <!-- Education Section -->
-    <section id="education" class="py-24 fade-in-section">
-        <h2 class="text-2xl md:text-3xl font-bold mb-8 text-gray-200" style="color: var(--lightest-slate);"><span class="text-cyan-400" style="color: var(--cyan);">03.</span> Education</h2>
-        <div class="bg-gray-800 rounded-lg p-6 border-l-4 border-cyan-400" style="background-color: var(--light-navy); border-left-color: var(--cyan);">
-            <h3 class="font-bold text-lg text-gray-200" style="color: var(--lightest-slate);">Secondary School Diploma in IT</h3>
-            <p class="mt-1">ITIS Ettore Majorana</p>
-        </div>
-    </section>
+        <!-- Languages Section -->
+        <section id="languages" class="py-24 fade-in-section">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8 text-gray-200" style="color: var(--lightest-slate);"><span class="text-cyan-400" style="color: var(--cyan);">04.</span> Languages</h2>
+            <div class="flex flex-wrap gap-4">
+                 <span class="skill-item bg-gray-800 text-gray-300 text-sm font-medium px-4 py-2 rounded-lg" style="background-color: var(--light-navy); color: var(--light-slate);">Italian</span>
+                 <span class="skill-item bg-gray-800 text-gray-300 text-sm font-medium px-4 py-2 rounded-lg" style="background-color: var(--light-navy); color: var(--light-slate);">English</span>
+                 <span class="skill-item bg-gray-800 text-gray-300 text-sm font-medium px-4 py-2 rounded-lg" style="background-color: var(--light-navy); color: var(--light-slate);">Hungarian</span>
+            </div>
+        </section>
 
-    <!-- Languages Section -->
-    <section id="languages" class="py-24 fade-in-section">
-        <h2 class="text-2xl md:text-3xl font-bold mb-8 text-gray-200" style="color: var(--lightest-slate);"><span class="text-cyan-400" style="color: var(--cyan);">04.</span> Languages</h2>
-        <div class="flex flex-wrap gap-4">
-            <span class="skill-item bg-gray-800 text-gray-300 text-sm font-medium px-4 py-2 rounded-lg" style="background-color: var(--light-navy); color: var(--light-slate);">Italian</span>
-            <span class="skill-item bg-gray-800 text-gray-300 text-sm font-medium px-4 py-2 rounded-lg" style="background-color: var(--light-navy); color: var(--light-slate);">English</span>
-            <span class="skill-item bg-gray-800 text-gray-300 text-sm font-medium px-4 py-2 rounded-lg" style="background-color: var(--light-navy); color: var(--light-slate);">Hungarian</span>
-        </div>
-    </section>
+        <!-- Personal Projects Section -->
+        <section id="projects" class="py-24 fade-in-section">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8 text-gray-200" style="color: var(--lightest-slate);"><span class="text-cyan-400" style="color: var(--cyan);">05.</span> Personal Projects</h2>
+            <div class="project-card rounded-lg p-6 transition-all duration-300" style="background-color: var(--light-navy);">
+                <header class="flex justify-between items-start mb-4">
+                    <div>
+                        <h3 class="font-bold text-xl text-gray-200" style="color: var(--lightest-slate);">I Know What We'll Do Today</h3>
+                        <p class="text-sm mt-1" style="color: var(--slate);">Oct 2025 - Present</p>
+                    </div>
+                    <div class="flex items-center space-x-4 mt-1">
+                        <a href="https://github.com/Danny220/i-know-what-we-do-today" target="_blank" rel="noopener noreferrer" class="social-link text-gray-400" style="color: var(--slate);">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.54 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        </a>
+                        <a href="https://i-know-what-we-do-today.vercel.app/" target="_blank" rel="noopener noreferrer" class="social-link text-gray-400" style="color: var(--slate);">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                        </a>
+                    </div>
+                </header>
+                <p class="mb-4">Developed a full-stack web application from the ground up to help groups of friends organize outings. The platform allows users to create groups, propose events via a collaborative polling system, and finalize plans based on democratic voting.</p>
+                <div class="mb-4">
+                    <h4 class="font-semibold text-gray-300 mb-2" style="color: var(--light-slate);">Key Features:</h4>
+                    <ul class="list-disc list-inside text-sm space-y-1 pl-2">
+                        <li>Secure user authentication with JWT.</li>
+                        <li>Group creation, member management, and a unique invite link system.</li>
+                        <li>Interactive polling for event details with real-time vote display.</li>
+                        <li>Automated event creation and a shared group calendar view.</li>
+                    </ul>
+                </div>
+                <div class="flex flex-wrap gap-2 mt-4">
+                    <span class="bg-gray-700 text-cyan-300 text-xs font-medium px-2.5 py-1 rounded-full" style="background-color: var(--lightest-navy); color: var(--cyan);">React</span>
+                    <span class="bg-gray-700 text-cyan-300 text-xs font-medium px-2.5 py-1 rounded-full" style="background-color: var(--lightest-navy); color: var(--cyan);">Node.js</span>
+                    <span class="bg-gray-700 text-cyan-300 text-xs font-medium px-2.5 py-1 rounded-full" style="background-color: var(--lightest-navy); color: var(--cyan);">Express.js</span>
+                    <span class="bg-gray-700 text-cyan-300 text-xs font-medium px-2.5 py-1 rounded-full" style="background-color: var(--lightest-navy); color: var(--cyan);">PostgreSQL</span>
+                    <span class="bg-gray-700 text-cyan-300 text-xs font-medium px-2.5 py-1 rounded-full" style="background-color: var(--lightest-navy); color: var(--cyan);">Tailwind CSS</span>
+                    <span class="bg-gray-700 text-cyan-300 text-xs font-medium px-2.5 py-1 rounded-full" style="background-color: var(--lightest-navy); color: var(--cyan);">Zustand</span>
+                    <span class="bg-gray-700 text-cyan-300 text-xs font-medium px-2.5 py-1 rounded-full" style="background-color: var(--lightest-navy); color: var(--cyan);">Docker</span>
+                    <span class="bg-gray-700 text-cyan-300 text-xs font-medium px-2.5 py-1 rounded-full" style="background-color: var(--lightest-navy); color: var(--cyan);">Vercel</span>
+                </div>
+            </div>
+        </section>
 
-    <!-- Footer -->
-    <footer class="text-center py-12 text-gray-500 text-sm" style="color: var(--slate);">
-        <p>Designed & Built by Daniele Manna</p>
-        <p class="mt-2">Inspired by creative portfolios across the web.</p>
-    </footer>
+        <!-- Footer -->
+        <footer class="text-center py-12 text-gray-500 text-sm" style="color: var(--slate);">
+            <p>Designed & Built by Daniele Manna</p>
+            <p class="mt-2">Inspired by creative portfolios across the web.</p>
+        </footer>
 
-</div>
+    </div>
 
-<script>
+    <script>
     document.addEventListener('DOMContentLoaded', () => {
 
         // --- PARTICLE CANVAS ANIMATION ---
@@ -225,7 +275,7 @@
             mouse.x = event.x;
             mouse.y = event.y;
         });
-
+        
         window.addEventListener('mouseout', () => {
             mouse.x = undefined;
             mouse.y = undefined;
@@ -334,7 +384,7 @@
                 }
             }
         }
-
+        
         init();
         animate();
 
@@ -348,7 +398,7 @@
                     i++;
                     setTimeout(type, speed);
                 } else {
-                    element.querySelector('.typing-cursor').style.animation = 'blink 1s infinite';
+                     element.querySelector('.typing-cursor').style.animation = 'blink 1s infinite';
                 }
             };
             type();
@@ -356,7 +406,7 @@
 
         const heroName = document.getElementById('hero-name');
         const heroTitle = document.getElementById('hero-title');
-
+        
         setTimeout(() => typingEffect(heroName, 'Daniele Manna.', 100), 500);
         setTimeout(() => typingEffect(heroTitle, 'I build things for the web.', 75), 2500);
 
@@ -369,7 +419,7 @@
             { company: 'Dylog', role: 'Full Stack Developer', period: 'May 2023 - Oct 2023', description: 'Developed features and maintained applications within a collaborative team environment.' },
             { company: 'Dylog Internship', role: 'Full Stack Developer Intern', period: 'Nov 2022 - May 2023', description: 'Gained hands-on experience in full stack development, focusing on web technologies and best practices.' },
         ];
-
+        
         const skillsData = {
             'Frontend': ['Angular', 'React', 'HTML', 'CSS', 'SCSS', 'TypeScript', 'JavaScript'],
             'Backend': ['C#', 'ASP.NET', 'Java', 'Python', 'PHP'],
@@ -456,6 +506,7 @@
         }
 
     });
-</script>
+    </script>
 </body>
 </html>
+
