@@ -1,0 +1,15 @@
+{
+  "experience": [
+    { "company": "BasicNet S.p.A", "role": "Frontend Developer", "period": "Mar 2025 - Present", "description": "Developing and maintaining web applications using modern frontend technologies." },
+    { "company": "HERMES REPLY", "role": "Full Stack Developer", "period": "Oct 2023 - Mar 2025", "description": "Worked on various projects, contributing to both frontend and backend development cycles." },
+    { "company": "VLC2", "role": "Full Stack Developer", "period": "Oct 2023 - Present", "description": "Responsible for end-to-end development of web solutions for clients." },
+    { "company": "Dylog", "role": "Full Stack Developer", "period": "May 2023 - Oct 2023", "description": "Developed features and maintained applications within a collaborative team environment." },
+    { "company": "Dylog Internship", "role": "Full Stack Developer Intern", "period": "Nov 2022 - May 2023", "description": "Gained hands-on experience in full stack development, focusing on web technologies and best practices." }
+  ],
+  "skills": {
+    "Frontend": ["Angular", "React", "HTML", "CSS", "SCSS", "TypeScript", "JavaScript"],
+    "Backend": ["C#", "ASP.NET", "Java", "Python", "PHP"],
+    "Databases": ["SQL Server", "MongoDB"],
+    "Tools & Others": ["Git", "TFS", "Docker", "EF Core", "GraphQL"]
+  }
+}
